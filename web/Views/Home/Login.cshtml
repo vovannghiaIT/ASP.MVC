@@ -1,0 +1,38 @@
+﻿@model web.Context.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <span class="text-primary" style="font-weight:bold;font-size:30px">ĐĂNG NHẬP</span>
+            </div>
+            <div class="card-body">
+
+
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group"  style="font-weight:bold">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+
+                    </div>
+                    <div class="form-group" style="font-weight:bold">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
+                    </div>
+                    <hr />
+                    <p class="text-center mt-4">Don't have account?@Html.ActionLink("Đăng ký", "Register")</p>
+                                    <br><br>
+                                }
+            </div>
+        </div>
+    </div>
+</div>
+
