@@ -15,13 +15,13 @@
 
                 <div class="card card-category">
                     <div class="img-wrap" style="background: #ffd7d7">
-                        <a href="@Url.Action("ProductCategory","Category",new { Id = item.Id })">
+                        <a href="@Url.Action("Product_Category","Category",new { Id = item.Id })">
                             <img src="~/Content/images/category/@item.Avatar">
 
                         </a>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title text-center text-uppercase"><a href="@Url.Action("ProductCategory","Category",new { Id = item.Id })">@item.Name</a></h4>
+                        <h4 class="card-title text-center text-uppercase"><a href="@Url.Action("Product_Category","Category",new { Id = item.Id })">@item.Name</a></h4>
                        
                     </div>
                 </div>

@@ -1,36 +1,37 @@
-﻿@model IEnumerable<web.Context.Product>
+﻿@model IEnumerable<web.Context.User>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
 <script>
     function sortTable() {
         var table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("myTable");
         switching = true;
-      
+
         while (switching) {
-           
+
             switching = false;
             rows = table.rows;
-           
+
             for (i = 1; i < (rows.length - 1); i++) {
-              
+
                 shouldSwitch = false;
-                
+
                 x = rows[i].getElementsByTagName("TD")[0];
                 y = rows[i + 1].getElementsByTagName("TD")[0];
-               
+
                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                   
+
                     shouldSwitch = true;
                     break;
                 }
             }
             if (shouldSwitch) {
-               
+
                 rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                 switching = true;
             }
@@ -79,70 +80,45 @@
         <p><button onclick="sortTable()" class="mx-3 btn btn-md btn-primary"> <i class="fas fa-sort-alpha-down"></i></button></p>
     </div>
 </div>
+
 <table class="table container" id="myTable">
-    <thead class="bg-primary">
-        <tr>
-            <th scope="col " class="text-center">
+    <tr class="bg-primary">
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </th>
+        <th></th>
+    </tr>
 
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            
-            <th scope="col" class="text-center">
-              
-                @Html.DisplayNameFor(model => model.Avatar)
-            </th>
-            <th scope="col " class="text-center">
-                @Html.DisplayNameFor(model => model.CategoryId)
-            </th>
-            <th scope="col " class="text-center">
-                @Html.DisplayNameFor(model => model.TypeId)
-            </th>
-            <th scope="col" class="text-center">
-                @Html.DisplayNameFor(model => model.BrandId)
-            </th>
-
-            <th scope="col" class="text-center">
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th scope="col" class="text-center">
-                @Html.DisplayNameFor(model => model.PriceDiscount)
-            </th>
-
-
-            <th></th>
-
-
-        </tr>
-    </thead>
     @foreach (var item in Model)
     {
         <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Name)
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
-            <td class="text-center" style="width:100px;height:100px">
-
-                <img src="~/Content/images/items/@item.Avatar" class="img-fluid" alt="" />
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.CategoryId)
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.TypeId)
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
             </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.BrandId)
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
             </td>
-
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.PriceDiscount)
-            </td>
-
-
-
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |

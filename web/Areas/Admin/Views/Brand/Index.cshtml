@@ -1,9 +1,10 @@
-﻿@model IEnumerable<web.Context.Category>
+﻿@model IEnumerable<web.Context.Brand>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 
 <script>
     function sortTable() {
@@ -66,21 +67,17 @@
             }
         }
     }
-
-    
-
 </script>
-
-<h2>Loại Sản phẩm</h2>
+<h2 class="container">Thương hiệu</h2>
 <div class="container d-flex mt-5 ">
     <p class="container  ">
-        <a href="@Url.Action("Create","Category")" class="btn btn-md btn-success "><i class="fa fa-plus"></i> &nbspThêm loại Sản phẩm</a>
+        <a href="@Url.Action("Create","Brand")" class="btn btn-md btn-success "><i class="fa fa-plus"></i> &nbspThêm thương hiệu</a>
     </p>
 
     <div class="container d-flex flex-row-reverse">
 
-        <p><button onclick="sortTable()" class="btn btn-md btn-primary "><i class="fas fa-sort-alpha-down-alt"></i></button></p>
-        <p><button onclick="sortTable2()" class="mx-3 btn btn-md btn-primary"> <i class="fas fa-sort-alpha-down"></i></button></p>
+        <p><button onclick="sortTable2()" class="btn btn-md btn-primary "><i class="fas fa-sort-alpha-down-alt"></i></button></p>
+        <p><button onclick="sortTable()" class="mx-3 btn btn-md btn-primary"> <i class="fas fa-sort-alpha-down"></i></button></p>
     </div>
 </div>
 <table class="table container" id="myTable">
@@ -91,57 +88,61 @@
         <th>
             @Html.DisplayNameFor(model => model.Avatar)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.Slug)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.ShowOnHomePage)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.DisplayOrder)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.CreatedOnUtc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+            @Html.DisplayNameFor(model => model.UpdateOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deleted)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td class="text-center" style="width:50px;height:50px">
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td class="text-center" style="width:100px;height:100px">
 
-                <img src="~/Content/images/category/@item.Avatar" class="img-fluid" alt="" />
-            </td>
-
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Slug)
-            </td>
-
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.DisplayOrder)
-            </td>
-
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.CreatedOnUtc)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
-            </td>
-            <td class="text-center" style="width:200px">
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
-                <button class='btn btn-info'>Info</button>
-
-            </td>
-        </tr>
+        <img src="~/Content/images/items/@item.Avatar" class="img-fluid" alt="" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Slug)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShowOnHomePage)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DisplayOrder)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UpdateOnUtc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Deleted)
+    </td>
+    <td  class="text-center" style="width:300px">
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+    </td>
+</tr>
     }
 
 </table>

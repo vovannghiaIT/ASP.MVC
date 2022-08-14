@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "toast-css@1.1.0",
+      "destination": "Content/toast-css/"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "Content/toastr.js/"
+    }
+  ]
+}
