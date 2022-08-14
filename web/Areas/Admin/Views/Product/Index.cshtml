@@ -144,9 +144,10 @@
 
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                <a href="@Url.Action("Edit","Product", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
+                <a href="@Url.Action("Details","Product", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
+                <a href="@Url.Action("Delete","Product", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a> 
+             
             </td>
         </tr>
     }

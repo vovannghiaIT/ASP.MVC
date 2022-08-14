@@ -1,27 +1,16 @@
-﻿@model web.Context.Category
+﻿@model web.Context.Brand
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Category</h4>
+    <h4>Brand</h4>
     <hr />
-    <div class="container d-flex">
-
-        <div class="container d-flex justify-content-end">
-            <a href="@Url.Action("Index","Category")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
-        </div>
-        <div class="d-flex flex-row  bg-primary">
-
-            <a href="@Url.Action("Edit","Category", new { id = Model.Id })" class="btn btn-ms btn-primary ">  <i class="fa fa-edit"></i></a>
-         
-
-        </div>
-    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -37,14 +26,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Avatar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPopular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsPopular)
         </dd>
 
         <dt>
@@ -72,14 +53,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CreatedOnUtc)
         </dt>
 
@@ -88,13 +61,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+            @Html.DisplayNameFor(model => model.UpdateOnUtc)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
+            @Html.DisplayFor(model => model.UpdateOnUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deleted)
         </dd>
 
     </dl>
-</div>
 
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using web;
 using web.Context;
+using Web;
 using static web.Common;
 
 namespace VoVanNghia_2120110017.Areas.Admin.Controllers
@@ -82,9 +83,11 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
                     objProduct.CreatedOnUtc = DateTime.Now;
                     objQLBHEntities2.Products.Add(objProduct);
                     objQLBHEntities2.SaveChanges();
-                  
+                 
+
 
                     return RedirectToAction("Index");
+
                 }
                 catch
                 {
@@ -103,12 +106,14 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int Id)
         {
+         
             var obproduct = objQLBHEntities2.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(obproduct);
         }
         [HttpPost]
         public ActionResult Delete(Product objproduct)
         {
+       
             var obproduct = objQLBHEntities2.Products.Where(n => n.Id == objproduct.Id).FirstOrDefault();
             objQLBHEntities2.Products.Remove(obproduct);
             objQLBHEntities2.SaveChanges();
@@ -125,6 +130,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(Product objProduct)
         {
+           
             if (objProduct.ImageUpload != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);

@@ -20,12 +20,9 @@
 
                                 @foreach (var item in Model.ListCategory.Take(6))
                                 {
-
                                 <li>
                                 <a href="@Url.Action("Product_Category", "Category", new { Id = item.Id })">@item.Name</a>
                                 </li>
-
-
 
                                 }
 

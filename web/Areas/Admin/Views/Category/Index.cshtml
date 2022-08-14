@@ -92,9 +92,7 @@
             @Html.DisplayNameFor(model => model.Avatar)
         </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Slug)
-        </th>
+      
 
         <th>
             @Html.DisplayNameFor(model => model.DisplayOrder)
@@ -120,9 +118,7 @@
                 <img src="~/Content/images/category/@item.Avatar" class="img-fluid" alt="" />
             </td>
 
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Slug)
-            </td>
+           
 
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.DisplayOrder)
@@ -135,10 +131,9 @@
                 @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
             </td>
             <td class="text-center" style="width:200px">
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
-                <button class='btn btn-info'>Info</button>
+                <a href="@Url.Action("Edit","Category", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
+                <a href="@Url.Action("Details","Category", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
+                <a href="@Url.Action("Delete","Category", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a>
 
             </td>
         </tr>

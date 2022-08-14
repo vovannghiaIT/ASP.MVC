@@ -87,25 +87,8 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            Common objCommon = new Common();
-
-            var lstCat = objQLBHEntities2.Categories.ToList();
-
-            ListtoDataTableConverter converter = new ListtoDataTableConverter();
-            DataTable dtCategory = converter.ToDataTable(lstCat);
-            ViewBag.ListCategory = objCommon.ToSelectList(dtCategory, "Id", "Name");
-
-
-            List<CategoryType> lstCategoryType = new List<CategoryType>();
-            CategoryType objCategoryType = new CategoryType();
-            objCategoryType.Id = 1;
-            objCategoryType.Name = "Danh mục phổ biến";
-            lstCategoryType.Add(objCategoryType);
-
-
-
-            DataTable dtCategoryType = converter.ToDataTable(lstCategoryType);
-            ViewBag.CategoryType = objCommon.ToSelectList(dtCategoryType, "Id", "Name");
+         
+            this.LoadData();    
 
             var category = objQLBHEntities2.Categories.Where(n => n.Id == id).FirstOrDefault();
             return View(category);
@@ -114,6 +97,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(int id, Category objCategory)
         {
+            
             if (objCategory.ImageUpload != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(objCategory.ImageUpload.FileName);

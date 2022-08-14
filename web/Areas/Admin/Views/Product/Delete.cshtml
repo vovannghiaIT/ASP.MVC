@@ -33,6 +33,11 @@
         </dt>
 
         <dd>
+            @*<div class="col-md-10">
+                <label>Danh mục</label>
+                @Html.DropDownListFor(model => model.CategoryId, ViewBag.ListCategory as SelectList, "Chọn danh mục", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>*@
             @Html.DisplayFor(model => model.CategoryId)
         </dd>
 

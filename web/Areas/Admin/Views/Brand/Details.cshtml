@@ -1,4 +1,4 @@
-﻿@model web.Context.Category
+﻿@model web.Context.Brand
 
 @{
     ViewBag.Title = "Details";
@@ -8,20 +8,22 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Category</h4>
-    <hr />
+    <h4>Brand</h4>
+
     <div class="container d-flex">
 
         <div class="container d-flex justify-content-end">
-            <a href="@Url.Action("Index","Category")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
+            <a href="@Url.Action("Index","Brand")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
         </div>
         <div class="d-flex flex-row  bg-primary">
 
-            <a href="@Url.Action("Edit","Category", new { id = Model.Id })" class="btn btn-ms btn-primary ">  <i class="fa fa-edit"></i></a>
-         
+            <a href="@Url.Action("Edit","Brand", new { id = Model.Id })" class="btn btn-ms btn-primary ">  <i class="fa fa-edit"></i></a>
+
 
         </div>
+
     </div>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -37,14 +39,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Avatar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPopular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsPopular)
         </dd>
 
         <dt>
@@ -72,14 +66,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CreatedOnUtc)
         </dt>
 
@@ -88,13 +74,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+            @Html.DisplayNameFor(model => model.UpdateOnUtc)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
+            @Html.DisplayFor(model => model.UpdateOnUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deleted)
         </dd>
 
     </dl>
 </div>
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

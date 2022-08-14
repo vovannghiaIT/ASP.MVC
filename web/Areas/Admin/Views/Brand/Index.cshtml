@@ -88,9 +88,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Avatar)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Slug)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ShowOnHomePage)
         </th>
@@ -119,9 +119,9 @@
 
         <img src="~/Content/images/items/@item.Avatar" class="img-fluid" alt="" />
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.Slug)
-    </td>
+    </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.ShowOnHomePage)
     </td>
@@ -137,10 +137,11 @@
     <td>
         @Html.DisplayFor(modelItem => item.Deleted)
     </td>
-    <td  class="text-center" style="width:300px">
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+    <td class="text-center" style="width:300px">
+        <a href="@Url.Action("Edit","Brand", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
+        <a href="@Url.Action("Details","Brand", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
+        <a href="@Url.Action("Delete","Brand", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a>
+
     </td>
 </tr>
     }

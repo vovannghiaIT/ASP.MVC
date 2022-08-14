@@ -68,11 +68,11 @@
         }
     }
 </script>
-<h2 class="container">Sản phẩm</h2>
+<h2 class="container">User</h2>
 <div class="container d-flex mt-5 ">
-    <p class="container  ">
-        <a href="@Url.Action("Create","Product")" class="btn btn-md btn-success "><i class="fa fa-plus"></i> &nbspThêm Sản phẩm</a>
-    </p>
+    @*<p class="container  ">
+        <a href="@Url.Action("Create","User")" class="btn btn-md btn-success "><i class="fa fa-plus"></i> &nbspThêm User</a>
+    </p>*@
 
     <div class="container d-flex flex-row-reverse">
 
@@ -120,9 +120,10 @@
                 @Html.DisplayFor(modelItem => item.IsAdmin)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                <a href="@Url.Action("Edit","User", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
+                <a href="@Url.Action("Details","User", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
+                <a href="@Url.Action("Delete","User", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a>
+
             </td>
         </tr>
     }
