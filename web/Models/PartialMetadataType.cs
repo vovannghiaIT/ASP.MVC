@@ -19,6 +19,7 @@ namespace web.Models
         [NotMapped]
 
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }
+        public int Id { get; internal set; }
     }
     public partial class Category
     {

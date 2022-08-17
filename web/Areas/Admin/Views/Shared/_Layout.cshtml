@@ -29,6 +29,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="~/Content/Admin//plugins/summernote/summernote-bs4.min.css">
 
+    <link  rel ="stylesheet" type ="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" >
+    <link href="~/Library/toastify-js/toastify.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -211,7 +213,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                    with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -340,17 +342,24 @@
             </div>
             <!-- /.sidebar -->
         </aside>
-        <div  class="content-wrapper ">
+        <div class="content-wrapper ">
 
-        @RenderBody()
+            @RenderBody()
         </div>
         <!-- Content Wrapper. Contains page content -->
-     
         <!-- /.content-wrapper -->
         <footer class="main-footer">
         </footer>
+        @*<script>
 
+            Toastify({
 
+                text: "This is a toast",
+
+                duration: 3000
+
+            }).showToast();
+        </script>*@
 
     </div>
     <!-- ./wrapper -->
@@ -387,6 +396,8 @@
     <script src="~/Content/Admin/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/Content/Admin/dist/js/pages/dashboard.js"></script>
+    <script  type =" text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"> </script >
+    <script src="~/Library/toastify-js/toastify.js"></script>
 </body>
 </html>
 

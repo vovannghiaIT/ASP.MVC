@@ -8,7 +8,11 @@
     },
     {
       "library": "toastr.js@2.1.4",
-      "destination": "Content/toastr.js/"
+      "destination": "Library/toastr.js/"
+    },
+    {
+      "library": "toastify-js@1.12.0",
+      "destination": "Library/toastify-js/"
     }
   ]
 }

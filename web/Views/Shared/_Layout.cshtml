@@ -75,31 +75,31 @@
                                     <i class="fa fa-user mx-sm-5 px-4 mb-2"></i>
                                     @* <span class="notify">3</span>*@
                                 </div>
-                                @if (Session["idUser"] != null )
+                                @if (Session["idUser"] != null)
                                 {
 
-                                 
 
-                                 <div class="container d-flex justify-content-center">
-                                    <a href="" class="text-center  ">@Session["FullName"]</a>
-                                  </div>
-                                <div class="container d-flex">
-                                    <a href="~/Admin/Home/Index" target="_blank" class="btn btn-sm btn-outline-warning mr-1" style="width:100px">Admin</a><br />
-                                    <a href="~/Home/Logout" class="btn btn-sm btn-outline-warning" style="width:90px">Đăng xuất</a>
-                                </div>
-                                   
- 
+
+                                    <div class="container d-flex justify-content-center">
+                                        <a href="" class="text-center  ">@Session["FullName"]</a>
+                                    </div>
+                                    <div class="container d-flex">
+                                        <a href="~/Admin/Home/Index" target="_blank" class="btn btn-sm btn-outline-warning mr-1" style="width:100px">Admin</a><br />
+                                        <a href="~/Home/Logout" class="btn btn-sm btn-outline-warning" style="width:90px">Đăng xuất</a>
+                                    </div>
+
+
                                 }
                                 else
                                 {
-                                <div class="row w-100">
+                                    <div class="row w-100">
 
 
-                                    <a href="~/Home/Login" class="btn btn-sm col-md-12 btn-outline-warning" style="width:120px">Đăng nhập</a>
-                                </div>
+                                        <a href="~/Home/Login" class="btn btn-sm col-md-12 btn-outline-warning" style="width:120px">Đăng nhập</a>
+                                    </div>
                                 }
                                 @* <small class="text"> My profile </small>*@
-                                </a>
+
                             </div>
                             <div class="widget-header mr-1 p-0">
                                 <a href="#" class="widget-view">
@@ -119,11 +119,22 @@
                                 </a>
                             </div>
                             <div class="widget-header">
-                                <a href="/Cart/Cart" class="widget-view">
+                                <a href="@Url.Action("Index","Cart")">
                                     <div class="icon-area">
                                         <i class="fa fa-shopping-cart"></i>
+                                        @if (@Session["count"] == null)
+                                        {
+                                            <span class="notify" id="CartCount">0</span>
+
+                                        }
+                                        else
+                                        {
+                                            <span class="notify" id="CartCount">@Session["count"]</span>
+
+                                        }
+
                                     </div>
-                                    <small class="text"> Cart </small>
+                                    <small class="text"> Giỏ hàng </small>
                                 </a>
                             </div>
                         </div> <!-- widgets-wrap.// -->
@@ -181,7 +192,7 @@
                             <a class="nav-link" href="#">Services</a>
                         </li>
                         <li class="nav-item">
-                       
+
                             <a class="nav-link" href="@Url.Action("Category", "Category")">Tất cả loại sản phẩm</a>
                         </li>
                     </ul>
@@ -275,7 +286,26 @@
     <!-- ========================= FOOTER END // ========================= -->
 
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": true,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
 </body>
 </html>
 

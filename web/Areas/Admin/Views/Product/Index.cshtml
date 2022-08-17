@@ -10,27 +10,27 @@
         var table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("myTable");
         switching = true;
-      
+
         while (switching) {
-           
+
             switching = false;
             rows = table.rows;
-           
+
             for (i = 1; i < (rows.length - 1); i++) {
-              
+
                 shouldSwitch = false;
-                
+
                 x = rows[i].getElementsByTagName("TD")[0];
                 y = rows[i + 1].getElementsByTagName("TD")[0];
-               
+
                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                   
+
                     shouldSwitch = true;
                     break;
                 }
             }
             if (shouldSwitch) {
-               
+
                 rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                 switching = true;
             }
@@ -79,6 +79,7 @@
         <p><button onclick="sortTable()" class="mx-3 btn btn-md btn-primary"> <i class="fas fa-sort-alpha-down"></i></button></p>
     </div>
 </div>
+
 <table class="table container" id="myTable">
     <thead class="bg-primary">
         <tr>
@@ -86,9 +87,9 @@
 
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            
+
             <th scope="col" class="text-center">
-              
+
                 @Html.DisplayNameFor(model => model.Avatar)
             </th>
             <th scope="col " class="text-center">
@@ -146,10 +147,11 @@
             <td>
                 <a href="@Url.Action("Edit","Product", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
                 <a href="@Url.Action("Details","Product", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
-                <a href="@Url.Action("Delete","Product", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a> 
-             
+                <a href="@Url.Action("Delete","Product", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a>
+
             </td>
         </tr>
     }
 
 </table>
+
