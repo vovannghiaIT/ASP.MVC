@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,10 +16,30 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
     public class BrandController : Controller
     {
         QLBHEntities2 objQLBHEntities2 = new QLBHEntities2();
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listBrand = objQLBHEntities2.Brands.ToList();
-            return View(listBrand);
+            var lstBrands = new List<Brand>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                lstBrands = objQLBHEntities2.Brands.Where(n => n.Name.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                lstBrands = objQLBHEntities2.Brands.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            lstBrands = lstBrands.OrderByDescending(n => n.Id).ToList();
+            return View(lstBrands.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Details(int id)

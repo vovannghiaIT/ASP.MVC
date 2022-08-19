@@ -108,7 +108,7 @@
                         <span class="text-muted">USD 562.65 incl. VAT</span>
                     </div> <!-- price-detail-wrap .// -->
 
-                    <p>
+                    <p >
                         @Model.ShortDes
                     </p>
 
@@ -169,7 +169,11 @@
         <div class="row">
             <div class="col-md-8">
                 <h5 class="title-description">Description</h5>
-              @Model.FullDescription
+  
+                <div>
+                    @Html.Raw(Model.FullDescription)
+                </div>  
+
             </div> <!-- col.// -->
 
             <aside class="col-md-4">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,10 +19,30 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
     {
         // GET: Admin/Product
         QLBHEntities2 objQLBHEntities2 = new QLBHEntities2();
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listProduct = objQLBHEntities2.Products.ToList();
-            return View(listProduct);
+            var lstProduct = new List<Product>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                lstProduct = objQLBHEntities2.Products.Where(n => n.Name.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                lstProduct = objQLBHEntities2.Products.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            lstProduct = lstProduct.OrderByDescending(n => n.Id).ToList();
+            return View(lstProduct.ToPagedList(pageNumber, pageSize));
         }
         void LoadData()
         {
@@ -95,7 +116,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
                 }
             }
             return View(objProduct);
-        }
+        }   
 
         [HttpGet]
         public ActionResult Details(int Id)   

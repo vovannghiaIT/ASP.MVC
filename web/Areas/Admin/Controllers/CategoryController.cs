@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,10 +17,30 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
     {
         // GET: Admin/Category
         QLBHEntities2 objQLBHEntities2 = new QLBHEntities2();
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listCategory = objQLBHEntities2.Categories.ToList();
-            return View(listCategory);
+            var lstCategory = new List<Category>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                lstCategory = objQLBHEntities2.Categories.Where(n => n.Name.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                lstCategory = objQLBHEntities2.Categories.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            lstCategory = lstCategory.OrderByDescending(n => n.Id).ToList();
+            return View(lstCategory.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Create()
@@ -71,8 +92,8 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var product = objQLBHEntities2.Categories.Where(n => n.Id == id).FirstOrDefault();
-            return View(product);
+            var category = objQLBHEntities2.Categories.Where(n => n.Id == id).FirstOrDefault();
+            return View(category);
         }
         [HttpPost]
         public ActionResult Delete(Category objCat)

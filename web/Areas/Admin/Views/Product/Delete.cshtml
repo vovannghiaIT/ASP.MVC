@@ -4,147 +4,208 @@
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<style>
+    dl {
+        border: 1px solid #bdc8ca;
+        background-color: #f7fafa;
+    }
 
-<h2>Delete</h2>
+    .ie7 dl {
+        overflow: hidden;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
+    dt,
+    dd {
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+        dd ~ dt,
+        dd ~ dd {
+            border-top: 1px solid #bdc8ca;
+        }
+
+    dt {
+        float: left;
+        width: 35%;
+        padding-bottom: 0;
+    }
+
+    .ie7 dt {
+        padding-bottom: 10px;
+        clear: both;
+    }
+
+    dd {
+        margin-left: 35%;
+        border-left: 1px dotted #bdc8ca;
+        background-color: #fff;
+    }
+
+    .ie7 dd {
+        margin-left: 40%;
+        overflow: hidden;
+    }
+
+    dd:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    /*dt*/ .row2 + dd:after {
+        content: none;
+    }
+</style>
+<h2 class="text-danger">Delete</h2>
+
+<h3 class="text-danger">Bạn có muốn Xóa này không</h3>
 <div>
-    <h4>Product</h4>
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <table class="  content-wrapper ">
+        <dl class="row  d-flex mx-0">
+            <dl class="dl-horizontal col-md-6 ">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Avatar)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+                <dd class="text-center" style="width:100px;height:200px">
 
-        <dd>
-            @*<div class="col-md-10">
+                    <img src="~/Content/images/items/@Html.DisplayFor(model => model.Avatar)" class="img-fluid" alt="" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </dt>
+
+                <dd>
+                    @*<div class="col-md-10">
                 <label>Danh mục</label>
                 @Html.DropDownListFor(model => model.CategoryId, ViewBag.ListCategory as SelectList, "Chọn danh mục", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoryId)
             </div>*@
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+                    @Html.DisplayFor(model => model.CategoryId)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TypeId)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TypeId)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BrandId)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BrandId)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDes)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShortDes)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShortDes)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ShortDes)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullDescription)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FullDescription)
+                </dt>
+                <dd>
+                    @Html.Raw(Model.FullDescription)
+                </dd>
+            </dl>
+            <dl class="dl-horizontal   col-md-6">
+               
 
-        <dd>
-            @Html.DisplayFor(model => model.FullDescription)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PriceDiscount)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PriceDiscount)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PriceDiscount)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PriceDiscount)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Slug)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Slug)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Deleted)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Deleted)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShowOnHomePage)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShowOnHomePage)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ShowOnHomePage)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShowOnHomePage)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DisplayOrder)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DisplayOrder)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DisplayOrder)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedOnUtc)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOnUtc)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedOnUtc)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOnUtc)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UpdatedOnUtc)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
-        </dd>
+            </dl>
+        @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-    </dl>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger " /> |
+                <div class="btn  p-2 bg-primary ">
 
-    @using (Html.BeginForm("Delete","Product",FormMethod.Post, new { enctype="multipart/form-data"})) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+                @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        }
+</table>
 </div>

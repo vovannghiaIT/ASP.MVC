@@ -5,144 +5,203 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-success">Chi tiết Sản phẩm</h2>
+<style>
+    dl {
+        border: 1px solid #bdc8ca;
+        background-color: #f7fafa;
+    }
 
+    .ie7 dl {
+        overflow: hidden;
+    }
+
+    dt,
+    dd {
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+        dd ~ dt,
+        dd ~ dd {
+            border-top: 1px solid #bdc8ca;
+        }
+
+    dt {
+        float: left;
+        width: 35%;
+        padding-bottom: 0;
+    }
+
+    .ie7 dt {
+        padding-bottom: 10px;
+        clear: both;
+    }
+
+    dd {
+        margin-left: 35%;
+        border-left: 1px dotted #bdc8ca;
+        background-color: #fff;
+    }
+
+    .ie7 dd {
+        margin-left: 40%;
+        overflow: hidden;
+    }
+
+    dd:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    /*dt*/ .row2 + dd:after {
+        content: none;
+    }
+</style>
 <div>
-    <h4>Product</h4>
+   
     <hr />
     <div class="container d-flex">
 
     <div class="container d-flex justify-content-end">
-        <a href="@Url.Action("Index","Product")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
+        <a href="@Url.Action("Index","Product")" class="btn btn-ms btn-primary mb-4"> <i class="fas fa-arrow-left text-white"></i>Back</a>
     </div>
-    <div class="d-flex flex-row  bg-primary">
+    <div class="d-flex flex-row  ">
       
-        <a href="@Url.Action("Edit","Product", new { id = Model.Id })" class="btn btn-ms btn-primary ">  <i class="fa fa-edit"></i></a>
-      @*  @Html.ActionLink("Edit", "Edit", new { @class = "btn btn-sm btn-primary" })*@
+        <a href="@Url.Action("Edit","Product", new { id = Model.Id })" class="btn btn-ms btn-primary mb-4">  <i class="fa fa-edit"></i></a>
+    
 
     </div>
     </div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <table class="  content-wrapper ">
+        <dl class="row  d-flex mx-0">
+            <dl class="dl-horizontal col-md-6 ">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Avatar)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
+                <dd  class="text-center" style="width:100px;height:200px">
+                 
+                    <img src="~/Content/images/items/@Html.DisplayFor(model => model.Avatar)" class="img-fluid" alt=""  />
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CategoryId)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TypeId)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TypeId)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BrandId)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BrandId)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDes)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShortDes)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShortDes)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ShortDes)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullDescription)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FullDescription)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullDescription)
-        </dd>
+                <dd>
+                    
+                        @Html.Raw(Model.FullDescription)
+                  
+                    @*@Html.DisplayFor(model => model.FullDescription)*@
+                </dd>
+            </dl>
+            <dl class="dl-horizontal   col-md-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PriceDiscount)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PriceDiscount)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PriceDiscount)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PriceDiscount)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Slug)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Slug)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Deleted)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Deleted)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShowOnHomePage)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShowOnHomePage)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ShowOnHomePage)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShowOnHomePage)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DisplayOrder)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DisplayOrder)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DisplayOrder)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedOnUtc)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOnUtc)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedOnUtc)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOnUtc)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UpdatedOnUtc)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
-        </dd>
-
-    </dl>
+            </dl>
+</table>
 </div>
 

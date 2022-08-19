@@ -3,7 +3,7 @@
     ViewBag.Title = "Home Page";
 // code C#
 }
-
+    
 
 
 <div class="container">
@@ -122,7 +122,13 @@
                     <div class="text-wrap p-3">
                        @*cách viết khác thẻ a *@
                         @Html.ActionLink(item.Name, "Detail", "Product", new { Id = item.Id }, null)
-                        <span class="badge badge-danger"> -10% </span>
+
+                        <span class="badge badge-danger">
+
+                            @(100-(Math.Round((double)
+                    (item.PriceDiscount / item.Price) *100))
+                                ) %
+                        </span>
                     </div>
                     <div class="price mt-1 text-muted"><del style="font-size:13px">@string.Format("{0:0,0}", item.Price)</del><sup>đ</sup></div>
                     <div class="price mt-1 text-danger" style="font-size:16px">@string.Format("{0:0,0}", item.PriceDiscount)<sup>đ</sup></div><br />
@@ -158,15 +164,24 @@
                 </div> <!-- col.// -->
                 <div class="col-md-9">
                     <ul class="row no-gutters bordered-cols">
-                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 1).Take(4))
+                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 5).Take(4))
                         {
                         <li class="col-6 col-lg-3 col-md-4">
                             <a href="@Url.Action("Detail","Product",new { Id = item.Id })" class="item">
                                 <div class="card-body">
                                     <h6 class="title">@item.Name</h6>
                                     <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
-                                    <div class="price mt-1 text-muted"><del style="font-size:13px">@string.Format("{0:0,0}", item.Price)</del><sup>đ</sup></div>
-                                    <div class="price mt-1 text-danger" style="font-size:15px">@string.Format("{0:0,0}", item.PriceDiscount)<sup>đ</sup></div><br />
+                                    @if (item.PriceDiscount != null)
+                                    {
+
+                                        <div class="price mt-1 text-muted"><del style="font-size:13px">@string.Format("{0:0,0}", item.Price)</del><sup>đ</sup></div>
+                                        <div class="price mt-1 text-danger" style="font-size:15px">@string.Format("{0:0,0}", item.PriceDiscount)<sup>đ</sup></div><br />
+                                    }
+                                    else
+                                    {
+                                        <div class="price mt-1 text-danger">@string.Format("{0:0,0}", item.Price)<sup>đ</sup></div>
+
+                                    }
                                 </div>
                             </a>
                         </li>
@@ -198,16 +213,24 @@
                 <div class="col-md-9">
                     <ul class="row no-gutters bordered-cols">
 
-                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 2).Take(4))
+                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 6).Take(4))
                         {
                         <li class="col-6 col-lg-3 col-md-4">
                             <a href="@Url.Action("Detail","Product",new { Id = item.Id })" class="item">
                                 <div class="card-body">
                                     <h6 style="font-weight: bold; font-size: 17px" class="title">@item.Name</h6>
                                     <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
-                                    <div class="price mt-1 "><span style="font-size:13px"> @item.Price</span><sup>đ</sup></div>
-                                    <div class="price mt-1 text-danger" style="font-size:15px">@item.PriceDiscount<sup></sup></div><br />
-                                  
+                                    @if (item.PriceDiscount != null)
+                                    {
+
+                                        <div class="price mt-1 text-muted"><del style="font-size:13px">@string.Format("{0:0,0}", item.Price)</del><sup>đ</sup></div>
+                                        <div class="price mt-1 text-danger" style="font-size:15px">@string.Format("{0:0,0}", item.PriceDiscount)<sup>đ</sup></div><br />
+                                    }
+                                    else
+                                    {
+                                        <div class="price mt-1 text-danger">@string.Format("{0:0,0}", item.Price)<sup>đ</sup></div>
+
+                                    }
                                 </div>
                             </a>
                         </li>
@@ -298,8 +321,19 @@
                     <a href="@Url.Action("Detail","Product",new { Id = item.Id })" class="img-wrap"> <img src="~/Content/images/items/@item.Avatar"> </a>
                     <figcaption class="info-wrap">
                         <a href="@Url.Action("Detail","Product",new { Id = item.Id })" class="title" style="font-weight:bold;">@item.Name</a>
-                        <div class="price mt-1 text-muted"><del style="font-size:13px">@string.Format("{0:0,0}", item.Price)</del><sup>đ</sup></div>
-                        <div class="price mt-1 text-danger" style="font-size:15px">@string.Format("{0:0,0}", item.PriceDiscount)<sup>đ</sup></div><br />
+                        @if (item.PriceDiscount != null)
+                        {
+
+                            <div class="price mt-2 text-muted"><del style="font-size:13px">@string.Format("{0:0,0}", item.Price)</del><sup>đ</sup></div>
+                            <div class="price mt-1 text-danger" style="font-size:15px">@string.Format("{0:0,0}", item.PriceDiscount)<sup>đ</sup></div><br />
+                        }
+                        else
+                        {
+                            <div class="mt-1"></div>
+                            <div class="price  p-sm-3 text-danger">@string.Format("{0:0,0}", item.Price)<sup>đ</sup></div>
+
+                        }
+                      
                     </figcaption>
                 </div>
             </div>  <!-- col.// -->

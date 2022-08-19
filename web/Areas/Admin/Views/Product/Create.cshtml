@@ -41,8 +41,10 @@
                     <label>Mô tả đầy đủ</label>
                     <div class="col-md-10">
                         @Html.TextAreaFor(model => model.FullDescription, new { htmlAttributes = new { @class = "form-control", @id = "FullDescription" } })
-                        <script type="text/javascript" lang="javascript">
-                            CKEDITOR.replace("FullDescription")
+                        <script type="text/javascript" lang="javascript" >
+                            
+                            CKEDITOR.replace("FullDescription");
+
                         </script>
                         @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })
                     </div>

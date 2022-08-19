@@ -1,10 +1,180 @@
-﻿@model IEnumerable<web.Context.Category>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<web.Context.Category>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+
+        .pagination > li {
+            display: inline;
+        }
+
+            .pagination > li > a,
+            .pagination > li > span {
+                position: relative;
+                float: left;
+                padding: 6px 12px;
+                margin-left: -1px;
+                line-height: 1.428571429;
+                text-decoration: none;
+                background-color: #ffffff;
+                border: 1px solid #dddddd;
+            }
+
+            .pagination > li:first-child > a,
+            .pagination > li:first-child > span {
+                margin-left: 0;
+                border-bottom-left-radius: 4px;
+                border-top-left-radius: 4px;
+            }
+
+            .pagination > li:last-child > a,
+            .pagination > li:last-child > span {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .pagination > li > a:hover,
+            .pagination > li > span:hover,
+            .pagination > li > a:focus,
+            .pagination > li > span:focus {
+                background-color: #eeeeee;
+            }
+
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            color: #ffffff;
+            cursor: default;
+            background-color: #428bca;
+            border-color: #428bca;
+        }
+
+        .pagination > .disabled > span,
+        .pagination > .disabled > a,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color: #999999;
+            cursor: not-allowed;
+            background-color: #ffffff;
+            border-color: #dddddd;
+        }
+
+    .pagination-lg > li > a,
+    .pagination-lg > li > span {
+        padding: 10px 16px;
+        font-size: 18px;
+    }
+
+    .pagination-lg > li:first-child > a,
+    .pagination-lg > li:first-child > span {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+    }
+
+    .pagination-lg > li:last-child > a,
+    .pagination-lg > li:last-child > span {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .pagination-sm > li > a,
+    .pagination-sm > li > span {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .pagination-sm > li:first-child > a,
+    .pagination-sm > li:first-child > span {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+
+    .pagination-sm > li:first-child > a,
+    .pagination-sm > li:first-child > span {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pager {
+        padding-left: 0;
+        margin: 20px 0;
+        text-align: center;
+        list-style: none;
+    }
+
+        .pager:before,
+        .pager:after {
+            display: table;
+            content: "";
+        }
+
+        .pager:after {
+            clear: both;
+        }
+
+        .pager:before,
+        .pager:after {
+            display: table;
+            content: "";
+        }
+
+        .pager:after {
+            clear: both;
+        }
+
+        .pager li {
+            display: inline;
+        }
+
+            .pager li > a,
+            .pager li > span {
+                display: inline-block;
+                padding: 5px 14px;
+                background-color: #ffffff;
+                border: 1px solid #dddddd;
+                border-radius: 15px;
+            }
+
+                .pager li > a:hover,
+                .pager li > a:focus {
+                    text-decoration: none;
+                    background-color: #eeeeee;
+                }
+
+        .pager .next > a,
+        .pager .next > span {
+            float: right;
+        }
+
+        .pager .previous > a,
+        .pager .previous > span {
+            float: left;
+        }
+
+        .pager .disabled > a,
+        .pager .disabled > a:hover,
+        .pager .disabled > a:focus,
+        .pager .disabled > span {
+            color: #999999;
+            cursor: not-allowed;
+            background-color: #ffffff;
+        }
+</style>
 <script>
     function sortTable() {
         var table, rows, switching, i, x, y, shouldSwitch;
@@ -67,17 +237,25 @@
         }
     }
 
-    
+
 
 </script>
 
 <h2>Loại Sản phẩm</h2>
-<div class="container d-flex mt-5 ">
-    <p class="container  ">
+<div class="container row d-flex mt-5 ">
+    <p class="container col-md-3 ">
         <a href="@Url.Action("Create","Category")" class="btn btn-md btn-success "><i class="fa fa-plus"></i> &nbspThêm loại Sản phẩm</a>
     </p>
-
-    <div class="container d-flex flex-row-reverse">
+    <div class="d-flex col-md-5">
+        @using (Html.BeginForm("Index", "Category", FormMethod.Get))
+        {
+            <p>
+                Tìm sản phẩm:&nbsp @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @placeholder = "Nhập tên loại sản phẩm" })
+                <input type="submit" class="btn btn-sm btn-outline-primary " value="Tìm kiếm" />
+            </p>
+        }
+    </div>
+    <div class="container d-flex flex-row-reverse col-md-2">
 
         <p><button onclick="sortTable()" class="btn btn-md btn-primary "><i class="fas fa-sort-alpha-down-alt"></i></button></p>
         <p><button onclick="sortTable2()" class="mx-3 btn btn-md btn-primary"> <i class="fas fa-sort-alpha-down"></i></button></p>
@@ -86,23 +264,23 @@
 <table class="table container" id="myTable">
     <tr class="bg-primary">
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </th>
-
-      
-
-        <th>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
         </th>
 
+
+
         <th>
-            @Html.DisplayNameFor(model => model.CreatedOnUtc)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DisplayOrder)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedOnUtc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UpdatedOnUtc)
         </th>
         <th></th>
     </tr>
@@ -118,7 +296,7 @@
                 <img src="~/Content/images/category/@item.Avatar" class="img-fluid" alt="" />
             </td>
 
-           
+
 
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.DisplayOrder)
@@ -140,3 +318,7 @@
     }
 
 </table>
+<div class="text-center">
+    Trang @(Model.PageCount <Model.PageNumber ?0 :Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+</div>

@@ -4,94 +4,153 @@
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPopular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsPopular)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShowOnHomePage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShowOnHomePage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DisplayOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOnUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedOnUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedOnUtc)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<style>
+    dl {
+        border: 1px solid #bdc8ca;
+        background-color: #f7fafa;
     }
+
+    .ie7 dl {
+        overflow: hidden;
+    }
+
+    dt,
+    dd {
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+        dd ~ dt,
+        dd ~ dd {
+            border-top: 1px solid #bdc8ca;
+        }
+
+    dt {
+        float: left;
+        width: 35%;
+        padding-bottom: 0;
+    }
+
+    .ie7 dt {
+        padding-bottom: 10px;
+        clear: both;
+    }
+
+    dd {
+        margin-left: 35%;
+        border-left: 1px dotted #bdc8ca;
+        background-color: #fff;
+    }
+
+    .ie7 dd {
+        margin-left: 40%;
+        overflow: hidden;
+    }
+
+    dd:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    /*dt*/ .row2 + dd:after {
+        content: none;
+    }
+</style>
+<h2 class="text-danger">Delete</h2>
+
+<h3 class="text-danger">Bạn có muốn Xóa này không</h3>
+<div>
+
+    <hr />
+   <table class="content-wrapper ">
+       <dl class="row  d-flex mx-0">
+           <dl class="dl-horizontal col-md-6 ">
+               <dt>
+                   @Html.DisplayNameFor(model => model.Name)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.Name)
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.Avatar)
+               </dt>
+
+               <dd class="text-center" style="width:100px;height:200px">
+
+                   <img src="~/Content/images/category/@Html.DisplayFor(model => model.Avatar)" class="img-fluid" alt="" />
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.IsPopular)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.IsPopular)
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.Slug)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.Slug)
+               </dd>
+           </dl>
+           <dl class="dl-horizontal   col-md-6">
+               <dt>
+                   @Html.DisplayNameFor(model => model.ShowOnHomePage)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.ShowOnHomePage)
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.DisplayOrder)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.DisplayOrder)
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.Deleted)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.Deleted)
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.CreatedOnUtc)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.CreatedOnUtc)
+               </dd>
+
+               <dt>
+                   @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+               </dt>
+
+               <dd>
+                   @Html.DisplayFor(model => model.UpdatedOnUtc)
+               </dd>
+
+           </dl>
+           @using (Html.BeginForm("Delete", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+           {
+               @Html.AntiForgeryToken()
+
+               <div class="form-actions no-color">
+                   <input type="submit" value="Delete" class="btn btn-danger " /> |
+                   <div class="btn  p-2 bg-primary ">
+
+                       @Html.ActionLink("Back to List", "Index")
+                   </div>
+               </div>
+           }
+</table>
 </div>

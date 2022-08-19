@@ -5,11 +5,76 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+
+<h2 class="text-success">Chi tiết Sản phẩm</h2>
+<style>
+    dl {
+        border: 1px solid #bdc8ca;
+        background-color: #f7fafa;
+    }
+
+    .ie7 dl {
+        overflow: hidden;
+    }
+
+    dt,
+    dd {
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+        dd ~ dt,
+        dd ~ dd {
+            border-top: 1px solid #bdc8ca;
+        }
+
+    dt {
+        float: left;
+        width: 35%;
+        padding-bottom: 0;
+    }
+
+    .ie7 dt {
+        padding-bottom: 10px;
+        clear: both;
+    }
+
+    dd {
+        margin-left: 35%;
+        border-left: 1px dotted #bdc8ca;
+        background-color: #fff;
+    }
+
+    .ie7 dd {
+        margin-left: 40%;
+        overflow: hidden;
+    }
+
+    dd:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    /*dt*/ .row2 + dd:after {
+        content: none;
+    }
+</style>
 
 <div>
-    <h4>User</h4>
+   
     <hr />
+    <div class="container d-flex">
+
+        <div class="container d-flex justify-content-end">
+            <a href="@Url.Action("Index","User")" class="btn btn-ms btn-primary mb-4"> <i class="fas fa-arrow-left text-white"></i>Back</a>
+        </div>
+        <div class="d-flex flex-row  ">
+
+            <a href="@Url.Action("Edit","User", new { id = Model.Id })" class="btn btn-ms btn-primary mb-4">  <i class="fa fa-edit"></i></a>
+
+
+        </div>
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
@@ -53,7 +118,3 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
