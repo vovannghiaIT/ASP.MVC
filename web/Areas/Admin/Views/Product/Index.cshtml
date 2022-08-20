@@ -60,7 +60,7 @@
             z-index: 2;
             color: #ffffff;
             cursor: default;
-            background-color: #428bca;
+            background-color: #1a1aff;
             border-color: #428bca;
         }
 
@@ -153,7 +153,7 @@
                 .pager li > a:hover,
                 .pager li > a:focus {
                     text-decoration: none;
-                    background-color: #eeeeee;
+                    background-color: #3333ff;
                 }
 
         .pager .next > a,
@@ -266,15 +266,15 @@
     <thead class="bg-primary">
         <tr>
             <th scope="col " class="text-center">
-
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+                Tên sản phẩm
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Name)*@
             </th>
 
             <th scope="col" class="text-center">
-
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
+                Hình ảnh
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)*@
             </th>
-            <th scope="col " class="text-center">
+             @*<th scope="col " class="text-center">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryId)
             </th>
             <th scope="col " class="text-center">
@@ -282,57 +282,67 @@
             </th>
             <th scope="col" class="text-center">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().BrandId)
-            </th>
-
+            </th>*@
+            <th class="text-center">Ngày Tạo</th>
+            <th class="text-center">Ngày Cập Nhật</th>
             <th scope="col" class="text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+                Giá
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Price)*@
             </th>
             <th scope="col" class="text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().PriceDiscount)
+                Giảm giá
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().PriceDiscount)*@
             </th>
 
 
-            <th></th>
+            <th class="text-center">Chức năng</th>
 
 
         </tr>
     </thead>
     @foreach (var item in Model)
     {
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td class="text-center" style="width:100px;height:100px">
+<tr>
+    <td class="text-center">
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td class="text-center" style="width:100px;height:100px">
 
-                <img src="~/Content/images/items/@item.Avatar" class="img-fluid" alt="" />
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.TypeId)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.BrandId)
-            </td>
+        <img src="~/Content/images/items/@item.Avatar" class="img-fluid" alt="" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedOnUtc)
+    </td>
+    <td >
+        @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
+    </td>
+    @*<td class="text-center">
 
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.PriceDiscount)
-            </td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.TypeId)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.BrandId)
+        </td>*@
+
+    <td class="text-center">
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td class="text-center">
+        @Html.DisplayFor(modelItem => item.PriceDiscount)
+    </td>
 
 
 
-            <td>
-                <a href="@Url.Action("Edit","Product", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
-                <a href="@Url.Action("Details","Product", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
-                <a href="@Url.Action("Delete","Product", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a>
+    <td>
+        <a href="@Url.Action("Edit","Product", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
+        <a href="@Url.Action("Details","Product", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |
+        <a href="@Url.Action("Delete","Product", new { id = item.Id })" class="btn btn-md btn-danger "><i class="fa fa-trash-alt"></i></a>
 
-            </td>
-        </tr>
+    </td>
+</tr>
     }
 
 </table>

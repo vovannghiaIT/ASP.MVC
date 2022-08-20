@@ -21,6 +21,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         QLBHEntities2 objQLBHEntities2 = new QLBHEntities2();
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+      
             var lstProduct = new List<Product>();
             if (SearchString != null)
             {
@@ -121,6 +122,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int Id)   
         {
+            this.LoadData();
             var obproduct = objQLBHEntities2.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(obproduct);
         }

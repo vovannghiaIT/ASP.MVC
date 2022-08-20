@@ -77,15 +77,28 @@
         <dl class="row  d-flex mx-0">
             <dl class="dl-horizontal col-md-6 ">
                 <dt>
-                    @Html.DisplayNameFor(model => model.Name)
+                    <div>
+
+                        <p class=" fs-6" style="font-weight:900;">
+                            Tên sản phẩm
+                        </p>
+                    </div>
+                    @*@Html.DisplayNameFor(model => model.Name)*@
                 </dt>
 
                 <dd>
+                    
                     @Html.DisplayFor(model => model.Name)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Avatar)
+                    <div>
+
+                        <p class=" fs-6" style="font-weight:900;">
+                            Hình ảnh
+                        </p>
+                    </div>
+                    @*@Html.DisplayNameFor(model => model.Avatar)*@
                 </dt>
 
                 <dd  class="text-center" style="width:100px;height:200px">
@@ -93,8 +106,44 @@
                     <img src="~/Content/images/items/@Html.DisplayFor(model => model.Avatar)" class="img-fluid" alt=""  />
                 </dd>
 
+               
+
                 <dt>
-                    @Html.DisplayNameFor(model => model.CategoryId)
+                    <div>
+
+                        <p class=" fs-6" style="font-weight:900;">
+                           Mô tả ngắn
+                        </p>
+                    </div>
+                    @*@Html.DisplayNameFor(model => model.ShortDes)*@
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShortDes)
+                </dd>
+
+                <dt>
+                    <div>
+
+                        <p class=" fs-6" style="font-weight:900;">
+                            Mô tả đầy đủ
+                        </p>
+                    </div>
+                    @*@Html.DisplayNameFor(model => model.FullDescription)*@
+                </dt>
+
+                <dd>
+                    
+                        @Html.Raw(Model.FullDescription)
+                  
+                    @*@Html.DisplayFor(model => model.FullDescription)*@
+                </dd>
+            </dl>
+            <dl class="dl-horizontal   col-md-6">
+                <dt>
+                    <label>Danh mục</label>
+
+                   @Html.DisplayNameFor(model => model.CategoryId)
                 </dt>
 
                 <dd>
@@ -116,27 +165,6 @@
                 <dd>
                     @Html.DisplayFor(model => model.BrandId)
                 </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ShortDes)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ShortDes)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.FullDescription)
-                </dt>
-
-                <dd>
-                    
-                        @Html.Raw(Model.FullDescription)
-                  
-                    @*@Html.DisplayFor(model => model.FullDescription)*@
-                </dd>
-            </dl>
-            <dl class="dl-horizontal   col-md-6">
                 <dt>
                     @Html.DisplayNameFor(model => model.Price)
                 </dt>
@@ -153,37 +181,37 @@
                     @Html.DisplayFor(model => model.PriceDiscount)
                 </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Slug)
-                </dt>
+                @*<dt>
+            @Html.DisplayNameFor(model => model.Slug)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Slug)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Slug)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Deleted)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Deleted)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Deleted)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ShowOnHomePage)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowOnHomePage)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ShowOnHomePage)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ShowOnHomePage)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.DisplayOrder)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayOrder)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.DisplayOrder)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.DisplayOrder)
+        </dd>*@
 
                 <dt>
                     @Html.DisplayNameFor(model => model.CreatedOnUtc)
