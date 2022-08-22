@@ -1,4 +1,4 @@
-﻿@model IEnumerable<web.CartModel>
+﻿@model IEnumerable<web.Models.CartModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,8 @@
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("Remove", "Cart")',
-                data:  JSON.stringify(model) ,
+                /* data: { id: $(this).data('id') },*/
+                data: JSON.stringify(model),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function () {
@@ -45,6 +46,7 @@
                 <div class="card">
 
                     <table class="table table-borderless table-shopping-cart">
+                            @*nếu có sản phẩm hiện ra*@
                         <thead class="text-muted">
                             <tr class="small text-uppercase">
                                 <th scope="col" class="text-center">Sản phẩm</th>
@@ -55,7 +57,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @*nếu có sản phẩm hiện ra*@
                             @if (Model != null)
                             {
                                 foreach (var item in Model)
@@ -87,7 +88,7 @@
                                             <input type="hidden" value="@item.Product.Id" id="productid" />
 
 
-                                            <a href="" class="btn btn-danger" id="removecart"> Xóa</a>
+                                            <a href="#" class="btn btn-danger " id="removecart" > Xóa</a>
                                         </td>
                                     </tr>
                                 }

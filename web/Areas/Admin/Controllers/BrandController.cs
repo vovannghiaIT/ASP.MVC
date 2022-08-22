@@ -68,7 +68,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-          
+           
             return View();
         }
 
@@ -76,6 +76,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Brand brand)
         {
+           
             if (ModelState.IsValid)
             {
                 try
@@ -110,7 +111,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Edit(int id, Brand objBrand)
+        public ActionResult Edit(int id, Brand objBrand, FormCollection form)
         {
             if (objBrand.ImageUpload != null)
             {
@@ -119,6 +120,15 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
                 fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                 objBrand.Avatar = fileName;
                 objBrand.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
+            }
+            else
+            {
+                objBrand.Avatar = form["oldimage"];
+                objQLBHEntities2.Entry(objBrand).State = EntityState.Modified;
+                objBrand.UpdateOnUtc = DateTime.Now;
+                objQLBHEntities2.SaveChanges();
+                return RedirectToAction("Index");
+
             }
             objBrand.UpdateOnUtc = DateTime.Now;
             objQLBHEntities2.Entry(objBrand).State = EntityState.Modified;

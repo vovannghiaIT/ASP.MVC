@@ -187,7 +187,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandMasterData.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\CategoryMasterData.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PartialMetadataType.cs" />
     <Compile Include="Controllers\PaymentController.cs" />

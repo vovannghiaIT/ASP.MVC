@@ -82,17 +82,18 @@
                                 {
 
 
-
-                                    <div class="container d-flex justify-content-center">
-                                        <a href="" class="text-center  ">@Session["FullName"]</a>
-                                    </div>
-                                    <div class="container d-flex">
-                                        <a href="~/Admin/Home/Index" target="_blank" class="btn btn-sm btn-outline-warning mr-1" style="width:100px">Admin</a><br />
-                                        <a href="~/Home/Logout" class="btn btn-sm btn-outline-warning" style="width:90px">Đăng xuất</a>
-                                    </div>
+                                        <div class="container d-flex justify-content-center">
+                                            <a href="" class="text-center  ">@Session["FullName"]</a>
+                                        </div>
+                                        <div class="container d-flex">
+                                            <a href="~/Admin/Home/Index" target="_blank" class="btn btn-sm btn-outline-warning mr-1" style="width:100px">Admin</a><br />
+                                            <a href="~/Home/Logout" class="btn btn-sm btn-outline-warning" style="width:90px">Đăng xuất</a>
+                                        </div>
+                                    
 
 
                                 }
+                             
                                 else
                                 {
                                     <div class="row w-100">
@@ -156,30 +157,38 @@
 
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-bars text-muted mr-2"></i> Danh muc </a>
-                            <div class="dropdown-menu dropdown-large ">
-                                <nav class="row " >
-                                    
-                                   
-                                   
+                        <li class="nav-item">
 
-                                  </nav> <!--  row end .// -->
-                            </div> <!--  dropdown-menu dropdown-large end.// -->
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">Trang chủ</a>
                         </li>
-                        @*<li class="nav-item">
-                            <a class="nav-link" href="#">Ready to ship</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Trade shows</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>*@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-bars text-muted mr-2"></i> Trang đơn </a>
+                            <div class="dropdown-menu w-100">
+                                <nav class="row ">
                         <li class="nav-item">
 
                             <a class="nav-link" href="@Url.Action("Category", "Category")">Tất cả loại sản phẩm</a>
                         </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="@Url.Action("Category", "Category")">Tất cả  sản phẩm</a>
+                        </li>
+
+
+
+</nav> <!--  row end .// -->
+                            </div> <!--  dropdown-menu dropdown-large end.// -->
+                        </li>
+                        @*<li class="nav-item">
+            <a class="nav-link" href="#">Ready to ship</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Trade shows</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+        </li>*@
+                       
                     </ul>
                     @*<ul class="navbar-nav ml-md-auto">
                         <li class="nav-item">

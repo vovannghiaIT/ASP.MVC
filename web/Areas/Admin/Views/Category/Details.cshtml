@@ -64,7 +64,7 @@
     <div class="container d-flex">
 
         <div class="container d-flex justify-content-end mb-2">
-            <a href="@Url.Action("Index","Category")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
+            <a href="@Url.Action("Index","Category")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Trở về</a>
         </div>
         <div class="d-flex flex-row  mb-2">
 
@@ -92,7 +92,8 @@
 
                     <img src="~/Content/images/category/@Html.DisplayFor(model => model.Avatar)" class="img-fluid" alt="" />
                 </dd>
-
+            </dl>
+            <dl class="dl-horizontal   col-md-6">
                 <dt>
                     @Html.DisplayNameFor(model => model.IsPopular)
                 </dt>
@@ -101,13 +102,13 @@
                     @Html.DisplayFor(model => model.IsPopular)
                 </dd>
 
-                <dt>
+                @*<dt>
                     @Html.DisplayNameFor(model => model.Slug)
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.Slug)
-                </dd>
+                </dd>*@
 
                 <dt>
                     @Html.DisplayNameFor(model => model.ShowOnHomePage)
@@ -116,9 +117,8 @@
                 <dd>
                     @Html.DisplayFor(model => model.ShowOnHomePage)
                 </dd>
-            </dl>
-            <dl class="dl-horizontal   col-md-6">
-                <dt>
+
+                @*<dt>
                     @Html.DisplayNameFor(model => model.DisplayOrder)
                 </dt>
 
@@ -132,7 +132,8 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.Deleted)
-                </dd>
+                </dd>*@
+
 
                 <dt>
                     @Html.DisplayNameFor(model => model.CreatedOnUtc)

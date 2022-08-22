@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-
-namespace web.Models
+using web.Models;
+namespace web.Context
 {
     [MetadataType(typeof(UserMasterData))]
     public partial class User
     {
-        
+       
 
     }
     [MetadataType(typeof(ProductMasterData))]
@@ -19,14 +19,16 @@ namespace web.Models
         [NotMapped]
 
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }
-        public int Id { get; internal set; }
+      
     }
+    [MetadataType(typeof(CategoryMasterData))]
     public partial class Category
     {
         [NotMapped]
 
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }
     }
+    [MetadataType(typeof(BrandMasterData))]
     public partial class Brand
     {
         [NotMapped]
@@ -34,10 +36,5 @@ namespace web.Models
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }
     }
 
-    //[MetadataType(typeof(CategoryMasterData))]
-    //public partial class Category_2119110143
-    //{
-    //    [NotMapped]
-    //    public System.Web.HttpPostedFileBase ImageUpload { get; set; }
-    //}
+
 }

@@ -13,7 +13,7 @@
     
 <div class="form-horizontal">
     <div class="container d-flex justify-content-end">
-        <a href="@Url.Action("Index","Category")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
+        <a href="@Url.Action("Index","Category")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Trở về</a>
     </div>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -33,6 +33,7 @@
             <input type="file" name="ImageUpload" />
 
         </div>
+        @Html.Hidden("oldimage", @Model.Avatar)
     </div>
 
     @*<div class="form-group">

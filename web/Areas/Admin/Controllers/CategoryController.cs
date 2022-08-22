@@ -116,7 +116,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Edit(int id, Category objCategory)
+        public ActionResult Edit(int id, Category objCategory, FormCollection form)
         {
             
             if (objCategory.ImageUpload != null)
@@ -126,6 +126,15 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
                 fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                 objCategory.Avatar = fileName;
                 objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/category"), fileName));
+            }
+            else
+            {
+                objCategory.Avatar = form["oldimage"];
+                objQLBHEntities2.Entry(objCategory).State = EntityState.Modified;
+                objCategory.UpdatedOnUtc = DateTime.Now;
+                objQLBHEntities2.SaveChanges();
+                return RedirectToAction("Index");
+
             }
             objCategory.UpdatedOnUtc = DateTime.Now;
             objQLBHEntities2.Entry(objCategory).State = EntityState.Modified;

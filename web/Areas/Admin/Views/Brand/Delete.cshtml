@@ -83,13 +83,13 @@
                     <img src="~/Content/images/items/@Html.DisplayFor(model => model.Avatar)" class="img-fluid" alt="" />
                 </dd>
 
-                <dt>
+                @*<dt>
                     @Html.DisplayNameFor(model => model.Slug)
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.Slug)
-                </dd>
+                </dd>*@
 
                 <dt>
                     @Html.DisplayNameFor(model => model.ShowOnHomePage)
@@ -100,13 +100,13 @@
                 </dd>
             </dl>
             <dl class="dl-horizontal   col-md-6">
-                <dt>
+                @*<dt>
                     @Html.DisplayNameFor(model => model.DisplayOrder)
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.DisplayOrder)
-                </dd>
+                </dd>*@
 
                 <dt>
                     @Html.DisplayNameFor(model => model.CreatedOnUtc)
@@ -124,13 +124,13 @@
                     @Html.DisplayFor(model => model.UpdateOnUtc)
                 </dd>
 
-                <dt>
+                @*<dt>
                     @Html.DisplayNameFor(model => model.Deleted)
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.Deleted)
-                </dd>
+                </dd>*@
 
             </dl>
 
@@ -139,10 +139,10 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-danger " /> |
+                    <input type="submit" value="Xóa" class="btn btn-danger " /> |
                     <div class="btn  p-2 bg-primary ">
 
-                        @Html.ActionLink("Back to List", "Index")
+                        @Html.ActionLink("Trở về", "Index")
                     </div>
                 </div>
             }

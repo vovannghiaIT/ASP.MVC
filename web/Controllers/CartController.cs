@@ -1,11 +1,12 @@
 ﻿
+using web.Context;
+using web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using web.Context;
-using web.Models;
+using Newtonsoft.Json;
 
 namespace web.Controllers
 {
@@ -59,8 +60,9 @@ namespace web.Controllers
             return -1;  
         }
 
+       
 
-        
+
         //xóa sản phẩm khỏi giỏ hàng theo id
         public ActionResult Remove(int Id)
         {

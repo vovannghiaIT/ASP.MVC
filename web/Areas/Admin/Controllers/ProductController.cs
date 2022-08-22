@@ -13,6 +13,8 @@ using web.Context;
 using Web;
 using static web.Common;
 
+
+
 namespace VoVanNghia_2120110017.Areas.Admin.Controllers
 {
     public class ProductController : Controller
@@ -71,6 +73,8 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
             objProductType.Name = "Đề xuất";
             lstProductType.Add(objProductType);
 
+
+
             DataTable dtProductType = converter.ToDataTable(lstProductType);
             ViewBag.ProductType = objCommon.ToSelectList(dtProductType, "Id", "Name");
 
@@ -89,11 +93,11 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Product objProduct)
         {
-
             this.LoadData();
+
             if (ModelState.IsValid)
             {
-                try
+                try    
                 {
                     if (objProduct.ImageUpload != null)
                     {
@@ -103,7 +107,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
                         objProduct.Avatar = fileName;
                         objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
                     }
-                    objProduct.CreatedOnUtc = DateTime.Now;
+                     objProduct.CreatedOnUtc = DateTime.Now;
                     objQLBHEntities2.Products.Add(objProduct);
                     objQLBHEntities2.SaveChanges();
                  
@@ -152,9 +156,10 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Edit(Product objProduct)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Product objProduct, FormCollection form)
         {
-           
+            
             if (objProduct.ImageUpload != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
@@ -162,6 +167,15 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
                 fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                 objProduct.Avatar = fileName;
                 objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
+            }
+            else
+            {
+                objProduct.Avatar = form["oldimage"];
+                objQLBHEntities2.Entry(objProduct).State = EntityState.Modified;
+                objProduct.UpdatedOnUtc = DateTime.Now;
+                objQLBHEntities2.SaveChanges();
+
+
             }
             objQLBHEntities2.Entry(objProduct).State = EntityState.Modified;
             objProduct.UpdatedOnUtc = DateTime.Now;

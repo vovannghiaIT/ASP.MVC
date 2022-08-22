@@ -266,16 +266,16 @@
     <thead class="bg-primary">
         <tr>
             <th scope="col " class="text-center">
-                Tên sản phẩm
-                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Name)*@
+
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
             </th>
 
             <th scope="col" class="text-center">
-                Hình ảnh
-                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)*@
+
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
             </th>
-             @*<th scope="col " class="text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryId)
+            @*<th scope="col " class="text-center">
+                Html.DisplayNameFor(model => model.FirstOrDefault().CategoryId)
             </th>
             <th scope="col " class="text-center">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().TypeId)
@@ -283,19 +283,24 @@
             <th scope="col" class="text-center">
                 @Html.DisplayNameFor(model => model.FirstOrDefault().BrandId)
             </th>*@
-            <th class="text-center">Ngày Tạo</th>
-            <th class="text-center">Ngày Cập Nhật</th>
-            <th scope="col" class="text-center">
-                Giá
-                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Price)*@
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedOnUtc)
             </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().UpdatedOnUtc)
+            </th>
+           
             <th scope="col" class="text-center">
-                Giảm giá
-                @*@Html.DisplayNameFor(model => model.FirstOrDefault().PriceDiscount)*@
+              
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+            </th>
+            <th scope="col" class="text-center" style="width:200px">
+             
+               @Html.DisplayNameFor(model => model.FirstOrDefault().PriceDiscount)
             </th>
 
 
-            <th class="text-center">Chức năng</th>
+            <th class="text-center" style="width:200px">Chức năng</th>
 
 
         </tr>

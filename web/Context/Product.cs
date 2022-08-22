@@ -33,8 +33,8 @@ namespace web.Context
         public Nullable<System.DateTime> CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
 
-        [NotMapped]
-        public System.Web.HttpPostedFileBase ImageUpload { get; set; }
+        //[NotMapped]
+        //public System.Web.HttpPostedFileBase ImageUpload { get; set; }
         //public object ImageUpLoad { get; internal set; }
     }
 }

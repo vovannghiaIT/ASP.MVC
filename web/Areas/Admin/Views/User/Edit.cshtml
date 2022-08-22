@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Cập Nhật</h2>
+<h2 class="text-primary">Cập Nhật người dùng</h2>
 
 @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -13,10 +13,10 @@
     @Html.AntiForgeryToken()
     
         <div class="form-horizontal">
-            <h4>User</h4>
+         
             <hr />
             <div class="container d-flex justify-content-end">
-            <a href="@Url.Action("Index","User")" class="btn btn-ms btn-primary mb-4"> <i class="fas fa-arrow-left text-white"></i>Back</a>
+            <a href="@Url.Action("Index","User")" class="btn btn-ms btn-primary mb-4"> <i class="fas fa-arrow-left text-white"></i>Trở về</a>
         
             </div>
           </div>
@@ -65,7 +65,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </div>
     

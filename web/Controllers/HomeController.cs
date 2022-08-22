@@ -91,6 +91,8 @@ namespace web.Controllers
                     Session["FullName"] = data.FirstOrDefault().LastName + " " + data.FirstOrDefault().FirstName;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["idUser"] = data.FirstOrDefault().Id;
+                    
+                   
                     return RedirectToAction("Index");
                 }
                 else

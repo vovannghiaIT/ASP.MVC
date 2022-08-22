@@ -28,6 +28,7 @@ namespace web.Controllers
       
         public ActionResult Product_grid(int Id)
         {
+
             var listProduct_grid = objQLBHEntities.Products.Where(n => n.CategoryId == Id).ToList();
             return View(listProduct_grid);
         }

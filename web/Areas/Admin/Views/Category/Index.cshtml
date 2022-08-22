@@ -263,26 +263,20 @@
 </div>
 <table class="table container" id="myTable">
     <tr class="bg-primary">
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
         </th>
-        <th>
+        <th class="text-center" style="width:100px">
             @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
         </th>
 
-
-
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().DisplayOrder)
-        </th>
-
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedOnUtc)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.FirstOrDefault().UpdatedOnUtc)
         </th>
-        <th></th>
+        <th class="text-center">Chức năng</th>
     </tr>
 
     @foreach (var item in Model)
@@ -294,12 +288,6 @@
             <td class="text-center" style="width:50px;height:50px">
 
                 <img src="~/Content/images/category/@item.Avatar" class="img-fluid" alt="" />
-            </td>
-
-
-
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.DisplayOrder)
             </td>
 
             <td class="text-center">

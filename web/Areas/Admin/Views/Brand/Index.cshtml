@@ -259,37 +259,37 @@
 </div>
 <table class="table container" id="myTable">
     <tr class="bg-primary">
-        <th>
+        <th class="text-center" style="width:200px">
             @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
         </th>
-        <th>
+        <th style="width:200px">
             @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
         </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.Slug)
             </th>*@
-        <th>
+        <th class="text-center" style="width:300px">
             @Html.DisplayNameFor(model => model.FirstOrDefault().ShowOnHomePage)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().DisplayOrder)
-        </th>
-        <th>
+        </th>*@
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedOnUtc)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.FirstOrDefault().UpdateOnUtc)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Deleted)
-        </th>
-        <th></th>
+        </th>*@
+        <th class="text-center">Chức năng</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td class="text-center" style="width:100px;height:100px">
@@ -299,21 +299,21 @@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Slug)
                 </td>*@
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.ShowOnHomePage)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.DisplayOrder)
-            </td>
-            <td>
+            </td>*@
+            <td class="text-center" style="width:200px">
                 @Html.DisplayFor(modelItem => item.CreatedOnUtc)
             </td>
-            <td>
+            <td class="text-center" style="width:200px">
                 @Html.DisplayFor(modelItem => item.UpdateOnUtc)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Deleted)
-            </td>
+            </td>*@
             <td class="text-center" style="width:300px">
                 <a href="@Url.Action("Edit","Brand", new { id = item.Id })" class="btn btn-md btn-primary ">  <i class="fa fa-edit"></i></a> |
                 <a href="@Url.Action("Details","Brand", new { id = item.Id })" class="btn btn-md btn-primary "> <i class="fa fa-eye"></i></a> |

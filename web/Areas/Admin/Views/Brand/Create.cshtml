@@ -11,7 +11,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="container d-flex justify-content-end">
-        <a href="@Url.Action("Index","Brand")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Back</a>
+        <a href="@Url.Action("Index","Brand")" class="btn btn-ms btn-primary "> <i class="fas fa-arrow-left text-white"></i>Trở về</a>
     </div>
     <div class="form-horizontal">
 
@@ -75,13 +75,13 @@
                 </div>
             </div>*@
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Deleted, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

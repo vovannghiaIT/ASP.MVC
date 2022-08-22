@@ -56,7 +56,7 @@
         content: none;
     }
 </style>
-<h2 class="text-danger">Delete</h2>
+
 
 <h3 class="text-danger">Bạn có muốn Xóa này không</h3>
 <div>
@@ -90,13 +90,13 @@
                    @Html.DisplayFor(model => model.IsPopular)
                </dd>
 
-               <dt>
+               @*<dt>
                    @Html.DisplayNameFor(model => model.Slug)
                </dt>
 
                <dd>
                    @Html.DisplayFor(model => model.Slug)
-               </dd>
+               </dd>*@
            </dl>
            <dl class="dl-horizontal   col-md-6">
                <dt>
@@ -107,21 +107,21 @@
                    @Html.DisplayFor(model => model.ShowOnHomePage)
                </dd>
 
-               <dt>
+               @*<dt>
                    @Html.DisplayNameFor(model => model.DisplayOrder)
                </dt>
 
                <dd>
                    @Html.DisplayFor(model => model.DisplayOrder)
-               </dd>
+               </dd>*@
 
-               <dt>
+               @*<dt>
                    @Html.DisplayNameFor(model => model.Deleted)
                </dt>
 
                <dd>
                    @Html.DisplayFor(model => model.Deleted)
-               </dd>
+               </dd>*@
 
                <dt>
                    @Html.DisplayNameFor(model => model.CreatedOnUtc)
@@ -145,10 +145,10 @@
                @Html.AntiForgeryToken()
 
                <div class="form-actions no-color">
-                   <input type="submit" value="Delete" class="btn btn-danger " /> |
+                   <input type="submit" value="Xóa" class="btn btn-danger " /> |
                    <div class="btn  p-2 bg-primary ">
 
-                       @Html.ActionLink("Back to List", "Index")
+                       @Html.ActionLink("Trở về", "Index")
                    </div>
                </div>
            }

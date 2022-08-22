@@ -67,21 +67,43 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
             ViewBag.UserType = objCommon.ToSelectList(dtUserType, "Id", "IsAdmin");
 
         }
-        //[ValidateInput(false)]
-        //[HttpGet]
-        //public ActionResult Create()
-        //{
-        //    this.LoadData();
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult Create(User User)
-        //{
-        //    this.LoadData();
+     
+        [HttpGet]
+        public ActionResult Create()
+        {
+            this.LoadData();
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(User _user)
+        {
+            if (ModelState.IsValid)
+            {
+                var check = objQLBHEntities2.Users.FirstOrDefault(s => s.Email == _user.Email);
+                if (check == null)
+                {
+                    _user.Password = GetMD5(_user.Password);
+                    _user.IsAdmin = false; //IsAdmin = false = người dùng
+                    objQLBHEntities2.Configuration.ValidateOnSaveEnabled = false;
+                    // add user
+                    objQLBHEntities2.Users.Add(_user);
+                    //lưu thông tin lại
+                    objQLBHEntities2.SaveChanges();
+                    // trả về trang chủ
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.error = "Email đã tồn tại";
 
 
-        //    return View(User);
-        //}
+                    return View();
+                }
+
+            }
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Details(int id)
@@ -115,19 +137,19 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
             return View(User);
         }
         // mã hóa pass word
-        //public static string GetMD5(string str)
-        //{
-        //    MD5 md5 = new MD5CryptoServiceProvider();
-        //    byte[] fromData = Encoding.UTF8.GetBytes(str);
-        //    byte[] targetData = md5.ComputeHash(fromData);
-        //    string byte2String = null;
-        //    for (int i = 0; i < targetData.Length; i++)
-        //    {
-        //        byte2String += targetData[i].ToString("x2");
-        //    }
-        //    return byte2String;
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+            }
+            return byte2String;
 
-        //}
+        }
 
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(int id, User objUser)
