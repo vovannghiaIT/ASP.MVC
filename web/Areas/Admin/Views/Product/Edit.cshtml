@@ -21,8 +21,8 @@
         <div class="row mx-0">
             <div class="col-md-6">
                 <div class="form-group">
-                   
-                   
+
+
                     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group">
-                
+
                     @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         <input type="file" name="ImageUpload" />
@@ -43,14 +43,25 @@
 
 
                 <div class="form-group">
-                    
+
                     @Html.LabelFor(model => model.ShortDes, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.ShortDes, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.ShortDes, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                <div class="form-group">
 
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.CreatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.UpdatedOnUtc, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
                 <div class="form-group">
 
                     <div class="col-md-10">
@@ -73,7 +84,13 @@
                         @Html.ValidationMessageFor(model => model.CategoryId)
                     </div>
                 </div>
-
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.ShowOnHomePage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShowOnHomePage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
                 <div class="form-group">
 
                     <div class="col-md-10">
@@ -92,7 +109,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                 
+
                     @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
@@ -101,7 +118,7 @@
                 </div>
 
                 <div class="form-group">
-                    
+
                     @Html.LabelFor(model => model.PriceDiscount, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.PriceDiscount, new { htmlAttributes = new { @class = "form-control" } })

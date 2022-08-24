@@ -1,4 +1,5 @@
 ﻿@*@model List<web.Context.Product>*@
+
 @model Web.Models.HomeModel
 @{
     ViewBag.Title = "Product_Category";
@@ -12,15 +13,16 @@
 
 
         <!-- ============================  FILTER TOP  ================================= -->
-        <div class="card mb-3">
+        <!--<div class="card mb-3">
             <div class="card-body">
                 <ol class="breadcrumb float-left">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="#">Category name</a></li>
                     <li class="breadcrumb-item active">Item details</li>
                 </ol>
-            </div> <!-- card-body .// -->
-        </div> <!-- card.// -->
+            </div>-->
+        <!-- card-body .// -->
+        <!--</div>--> <!-- card.// -->
         <!-- ============================ FILTER TOP END.// ================================= -->
 
 
@@ -29,17 +31,17 @@
 
                 <article class="filter-group">
                     <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">	 Product type </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">Loại sản phẩm </a>
                     </h6>
                     <div class="filter-content collapse show" id="collapse_1">
                         <div class="inner">
                             <ul class="list-menu">
                                 @foreach (var item in Model.ListCategory.Take(6))
                                 {
-                                <li>
-                                    <a href="@Url.Action("Product_Category", "Category", new { Id = item.Id })">@item.Name</a>
-                                </li>
-                                 
+                                    <li>
+                                        <a href="@Url.Action("Product_Category", "Category", new { Id = item.Id })">@item.Name</a>
+                                    </li>
+
                                 }
                             </ul>
                         </div> <!-- inner.// -->
@@ -47,7 +49,7 @@
                 </article> <!-- filter-group  .// -->
                 <article class="filter-group">
                     <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Thương hiệu </a>
                     </h6>
                     <div class="filter-content collapse show" id="collapse_2">
                         <div class="inner">
@@ -56,44 +58,43 @@
                                 @foreach (var item in Model.ListBrands.Take(6))
                                 {
                                     @*<input type="checkbox" checked class="custom-control-input">*@
-                                    <li class="custom-control-label">
+                                    <li class="custom-control-label" style="list-style-type:none;">
 
                                         <a href="@Url.Action("Product_Category", "Brands", new { Id = item.Id })">@item.Name</a>
-                                        <b class="badge badge-pill badge-light float-right">120</b>
                                     </li>
 
 
 
                                 }
                             </label>
-                        
+
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group .// -->
                 <article class="filter-group">
                     <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Price range </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Giá </a>
                     </h6>
                     <div class="filter-content collapse show" id="collapse_3">
                         <div class="inner">
                             <input type="range" class="custom-range" min="0" max="100" name="">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>Min</label>
+                                    <label>Nhỏ nhất</label>
                                     <input class="form-control" placeholder="$0" type="number">
                                 </div>
                                 <div class="form-group text-right col-md-6">
-                                    <label>Max</label>
+                                    <label>Lớn nhất</label>
                                     <input class="form-control" placeholder="$1,0000" type="number">
                                 </div>
                             </div> <!-- form-row.// -->
-                            <button class="btn btn-block btn-primary">Apply</button>
+                            <button class="btn btn-block btn-primary">Chọn</button>
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group .// -->
                 <article class="filter-group">
                     <h6 class="title">
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Sizes </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Kích thước </a>
                     </h6>
                     <div class="filter-content collapse show" id="collapse_4">
                         <div class="inner">
@@ -119,7 +120,7 @@
                         </div> <!-- inner.// -->
                     </div>
                 </article> <!-- filter-group .// -->
-                <article class="filter-group">
+                <!--<article class="filter-group">
                     <h6 class="title">
                         <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Condition </a>
                     </h6>
@@ -144,9 +145,9 @@
                                 <input type="radio" name="myfilter_radio" class="custom-control-input">
                                 <div class="custom-control-label">Very old</div>
                             </label>
-                        </div> <!-- inner.// -->
-                    </div>
-                </article> <!-- filter-group .// -->
+                        </div>--> <!-- inner.// -->
+                    <!--</div>
+                </article>--> <!-- filter-group .// -->
 
             </aside> <!-- col.// -->
             <main class="col-md-10">
@@ -154,13 +155,8 @@
 
                 <header class="mb-3">
                     <div class="form-inline">
-                        <strong class="mr-md-auto">32 Items found </strong>
-                        <select class="mr-2 form-control">
-                            <option>Latest items</option>
-                            <option>Trending</option>
-                            <option>Most Popular</option>
-                            <option>Cheapest</option>
-                        </select>
+
+
                         <div class="btn-group">
                             @foreach (var item in Model.ListCategory.Take(1))
                             {
@@ -172,7 +168,7 @@
                                     <i class="fa fa-th"></i>
                                 </a>
 
-                                
+
                             }
                         </div>
                     </div>
@@ -184,7 +180,7 @@
                         <div class="row no-gutters">
                             <aside class="col-md-3">
                                 <a href="@Url.Action("Detail","Product",new { Id = item.Id })" class="img-wrap">
-                                    <span class="badge badge-danger"> NEW </span>
+                                    <span class="badge badge-danger"> Mới </span>
                                     <img src="~/Content/images/items/@item.Avatar">
                                 </a>
                             </aside> <!-- col.// -->
@@ -207,12 +203,7 @@
                                         <div class="label-rating">9/10</div>
                                     </div> <!-- rating-wrap.// -->
 
-                                    <p class="mb-3">
-                                        <span class="tag"> <i class="fa fa-check"></i> Verified</span>
-                                        <span class="tag"> 5 Years </span>
-                                        <span class="tag"> 80 reviews </span>
-                                        <span class="tag"> Russia </span>
-                                    </p>
+
 
                                     <p>
                                         @item.ShortDes
@@ -220,30 +211,7 @@
 
                                 </div> <!-- info-main.// -->
                             </div> <!-- col.// -->
-                            <aside class="col-sm-3">
-                                <div class="info-aside">
-                                    <div class="price-wrap">
-                                        <span class="h5 price">@item.Price</span>
-                                        <small class="text-muted">/per item</small>
-                                    </div> <!-- price-wrap.// -->
-                                    <small class="text-warning">Paid shipping</small>
 
-                                    <p class="text-muted mt-3">Grand textile Co</p>
-                                    <p class="mt-3">
-                                        <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
-                                        <a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Save </a>
-                                    </p>
-
-                                    <label class="custom-control mt-3 custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <div class="custom-control-label">
-                                            Add to compare
-                                        </div>
-                                    </label>
-
-                                </div> <!-- info-aside.// -->
-                            </aside> <!-- col.// -->
-                        </div> <!-- row.// -->
                     </article> <!-- card-product .// -->
 
 
@@ -253,22 +221,22 @@
 
                 <nav class="mb-4" aria-label="Page navigation sample">
                     <ul class="pagination">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#">Trang</a></li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">4</a></li>
                         <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        @*<li class="page-item"><a class="page-link" href="#">Next</a></li>*@
                     </ul>
                 </nav>
 
 
-                <div class="box text-center">
+                @*<div class="box text-center">
                     <p>Did you find what you were looking for？</p>
                     <a href="" class="btn btn-light">Yes</a>
                     <a href="" class="btn btn-light">No</a>
-                </div>
+                </div>*@
 
 
             </main> <!-- col.// -->
@@ -279,7 +247,7 @@
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 <!-- ========================= SECTION SUBSCRIBE  ========================= -->
-<section class="padding-y-lg bg-light border-top">
+<!--<section class="padding-y-lg bg-light border-top">
     <div class="container">
 
         <p class="pb-2 text-center">Delivering the latest product trends and industry news straight to your inbox</p>
@@ -289,16 +257,16 @@
                 <form class="form-row">
                     <div class="col-8">
                         <input class="form-control" placeholder="Your Email" type="email">
-                    </div> <!-- col.// -->
-                    <div class="col-4">
+                    </div>--> <!-- col.// -->
+                    <!--<div class="col-4">
                         <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
-                    </div> <!-- col.// -->
-                </form>
+                    </div>--> <!-- col.// -->
+                <!--</form>
                 <small class="form-text">We’ll never share your email address with a third-party. </small>
-            </div> <!-- col-md-6.// -->
-        </div>
+            </div>--> <!-- col-md-6.// -->
+        <!--</div>
 
 
     </div>
-</section>
+</section>-->
 <!-- ========================= SECTION SUBSCRIBE END// ========================= -->

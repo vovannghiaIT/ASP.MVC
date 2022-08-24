@@ -19,7 +19,13 @@ namespace web
                  new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "web.Controllers" }
             );
-          
+          //  routes.MapRoute(
+          //    name: "Search",
+          //    url: "tim-kiem",
+          //     new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+          //    new[] { "web.Controllers" }
+          //);
+
         }
     }
 }

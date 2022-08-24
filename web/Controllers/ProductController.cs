@@ -16,7 +16,10 @@ namespace web.Controllers
             var objProduct = objQLBHEntities2.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(objProduct);
         }
-        
+      
+
+
+
 
     }
 }

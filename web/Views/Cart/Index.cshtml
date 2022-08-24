@@ -75,13 +75,28 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="price-wrap">
+                                                @if (@item.Product.PriceDiscount != null)
+                                                {
 
-                                                <p class="text-danger">@item.Product.PriceDiscount<sup>đ</sup></p>
+                                                    <p class="text-danger">@item.Product.PriceDiscount<sup>đ</sup></p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="text-danger">@item.Product.Price<sup>đ</sup></p>
+                                                }
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-center">
                                             <div class="price-wrap">
+                                            @if(item.Product.PriceDiscount != null)
+                                            {
+
                                                 <p class="price">@(item.Product.PriceDiscount * item.Quantity)&nbsp<sup>đ</sup></p>
+                                            }
+                                            else
+                                            {
+                                            <p class="price">@(item.Product.Price * item.Quantity)&nbsp<sup>đ</sup></p>
+                                            }
                                             </div> <!-- price-wrap .// -->
                                         </td>
                                         <td class="text-right">
@@ -118,7 +133,7 @@
                 </div> <!-- card.// -->
 
                 <div class="alert alert-success mt-3">
-                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Giao hàng tận nơi miễn phí </p>
                 </div>
 
             </main> <!-- col.// -->
@@ -127,11 +142,11 @@
                     <div class="card-body">
                         <form>
                             <div class="form-group">
-                                <label>Have coupon?</label>
+                                <label>Có phiếu giảm giá</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="" placeholder="Coupon code">
+                                    <input type="text" class="form-control" name="" placeholder="mã giảm giá">
                                     <span class="input-group-append">
-                                        <button class="btn btn-primary">Apply</button>
+                                        <button class="btn btn-primary">Nhập</button>
                                     </span>
                                 </div>
                             </div>
@@ -162,7 +177,14 @@
 
                                     @foreach (var item in Model)
                                     {
-                                        sum += (int)item.Product.PriceDiscount * item.Quantity;
+                                        if(item.Product.PriceDiscount != null)
+                                        {
+
+                                            sum += (int)item.Product.PriceDiscount * item.Quantity;
+                                        }else
+                                        {
+                                            sum += (int)item.Product.Price * item.Quantity;
+                                        }
                                     }
                                     @sum
 
@@ -173,12 +195,12 @@
                         else
                         {
                             <dl class="dlist-align">
-                                <dt>Total price:</dt>
-                                <dd class="text-right">USD 568</dd>
+                                <dt>Total Số lượng:</dt>
+                                <dd class="text-right">0</dd>
                             </dl>
                             <dl class="dlist-align">
-                                <dt>Discount:</dt>
-                                <dd class="text-right">USD 658</dd>
+                                <dt>Thành tiền</dt>
+                                <dd class="text-right">0</dd>
                             </dl>
                             <dl class="dlist-align">
                                 <dd class="text-right  h5">
@@ -205,7 +227,7 @@
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 <!-- ========================= SECTION  ========================= -->
-<section class="section-name border-top padding-y">
+<!--<section class="section-name border-top padding-y">
     <div class="container">
         <h6>Payment and refund policy</h6>
         <p>
@@ -225,6 +247,6 @@
             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
 
-    </div><!-- container // -->
-</section>
+    </div>--><!-- container // -->
+<!--</section>-->
 <!-- ========================= SECTION  END// ========================= -->

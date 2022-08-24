@@ -116,7 +116,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Edit(int id, Category objCategory, FormCollection form)
+        public ActionResult Edit( Category objCategory, FormCollection form)
         {
             
             if (objCategory.ImageUpload != null)

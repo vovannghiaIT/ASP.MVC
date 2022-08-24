@@ -60,7 +60,7 @@
 
             <div class="col-md-5 container">
                 <div class="form-group">
-                   
+
                     @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
 
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="form-group">
-                  
+
                     @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.DropDownListFor(model => model.BrandId, ViewBag.ListBrand as SelectList, "Chọn Thương hiệu", new { @class = "form-control" })
@@ -97,16 +97,22 @@
                     </div>
                 </div>
                 <div class="form-group">
-                   
+
                     @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.ShowOnHomePage, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShowOnHomePage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShowOnHomePage, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
                 <div class="form-group">
-                    
+
                     @Html.LabelFor(model => model.PriceDiscount, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.PriceDiscount, new { htmlAttributes = new { @class = "form-control" } })

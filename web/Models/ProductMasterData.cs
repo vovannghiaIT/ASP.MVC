@@ -42,6 +42,7 @@ namespace web.Models
       
      
         public Nullable<bool> Deleted { get; set; }
+        [Display(Name = "Trạng thái")]
         public Nullable<bool> ShowOnHomePage { get; set; }
         public Nullable<int> DisplayOrder { get; set; }
         [Display(Name = "Ngày tạo")]

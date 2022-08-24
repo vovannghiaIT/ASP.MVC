@@ -1,0 +1,25 @@
+﻿@using web.Context
+@{
+    ViewBag.Title = "KQTimkiemPartial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string key = Request.QueryString["key"];
+}
+
+
+@{
+    if (key == "")
+    {
+        <h3>Vui lòng nhập từ khóa</h3>
+    }
+    else
+    {
+       
+    <h1>@key</h1>
+    }
+
+
+
+
+
+
+}

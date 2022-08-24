@@ -6,7 +6,7 @@ using System.Web;
 
 namespace web.Models
 {
-    public class CategoryMasterData
+    public partial class CategoryMasterData
     {
         public int Id { get; set; }
         [Display(Name = "Tên loại sản phẩm")]

@@ -133,15 +133,15 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int Id)
         {
-         
+
             var obproduct = objQLBHEntities2.Products.Where(n => n.Id == Id).FirstOrDefault();
-            
+
             return View(obproduct);
         }
         [HttpPost]
         public ActionResult Delete(Product objproduct)
         {
-       
+
             var obproduct = objQLBHEntities2.Products.Where(n => n.Id == objproduct.Id).FirstOrDefault();
             objQLBHEntities2.Products.Remove(obproduct);
             objQLBHEntities2.SaveChanges();
@@ -159,7 +159,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product objProduct, FormCollection form)
         {
-            
+            this.LoadData();
             if (objProduct.ImageUpload != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
@@ -184,5 +184,7 @@ namespace VoVanNghia_2120110017.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+   
     }
     }

@@ -32,11 +32,14 @@
     <link href="~/Content/css/ui.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css" />
     <link href="~/fonts/fonts/fontawesome/css/all.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <!-- custom javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="~/Scripts/js/script.js" type="text/javascript"></script>
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -51,8 +54,9 @@
                             <img class="logo" src="~/Content/images/logo.png">
                         </a> <!-- brand-wrap.// -->
                     </div>
+               
                     <div class="col-xl-6 col-lg-5 col-md-6">
-                        <form action="#" class="search-header">
+                        <form action="/Product/KQTimkiemPartial" class="search-header" name="Search" method="get">
                             <div class="input-group w-100">
                                 @*<select class="custom-select border-right" name="category_name">
                                         <option value="">All type</option>
@@ -60,15 +64,20 @@
                                         <option value="comments">Only best</option>
                                         <option value="content">Latest</option>
                                     </select>*@
-                                <input type="text" class="form-control" placeholder="Search">
+                              
+                                  
 
+                                <input type="text" class="form-control"  name="key" placeholder="Tìm kiếm sản phẩm">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary" type="submit"  >
                                         <i class="fa fa-search"></i> Tìm kiếm
                                     </button>
                                 </div>
+                               
+
                             </div>
                         </form> <!-- search-wrap .end// -->
+
                     </div> <!-- col.// -->
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
@@ -220,45 +229,44 @@
             <section class="footer-top padding-y-lg text-white">
                 <div class="row">
                     <aside class="col-md col-6">
-                        <h6 class="title">Brands</h6>
+                        <h6 class="title">Thương hiệu</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">Adidas</a></li>
-                            <li> <a href="#">Puma</a></li>
-                            <li> <a href="#">Reebok</a></li>
-                            <li> <a href="#">Nike</a></li>
+                            <li> <a href="#">Ego wear</a></li>
+                            <li> <a href="#">Kroea</a></li>
+                            <li> <a href="#">Yoga</a></li>
+                          
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
-                        <h6 class="title">Company</h6>
+                        <h6 class="title">Công ty</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">About us</a></li>
-                            <li> <a href="#">Career</a></li>
-                            <li> <a href="#">Find a store</a></li>
-                            <li> <a href="#">Rules and terms</a></li>
-                            <li> <a href="#">Sitemap</a></li>
+                            <li> <a href="#">Về chúng tôi</a></li>
+                            <li> <a href="#">Sự nghiệp</a></li>
+                            <li> <a href="#">Quy tắc và điều khoản</a></li>
+                            <li> <a href="#">Sơ đồ trang web</a></li>
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
-                        <h6 class="title">Help</h6>
+                        <h6 class="title">Trợ giúp</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">Contact us</a></li>
-                            <li> <a href="#">Money refund</a></li>
-                            <li> <a href="#">Order status</a></li>
-                            <li> <a href="#">Shipping info</a></li>
-                            <li> <a href="#">Open dispute</a></li>
+                            <li> <a href="#">Liên hệ chúng tôi</a></li>
+                            <li> <a href="#">Chính sách hoàn tiền</a></li>
+                            <li> <a href="#">Tình trạng đặt hàng</a></li>
+                            <li> <a href="#">Thông tin vận chuyển</a></li>
+                         
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
-                        <h6 class="title">Account</h6>
+                        <h6 class="title">Tài khoản</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#"> User Login </a></li>
-                            <li> <a href="#"> User register </a></li>
-                            <li> <a href="#"> Account Setting </a></li>
-                            <li> <a href="#"> My Orders </a></li>
+                            <li> <a href="#">Đăng nhập </a></li>
+                            <li> <a href="#">Đăng ký </a></li>
+                            <li> <a href="#"> Thiết lập tài khoản</a></li>
+                            <li> <a href="#">Đơn hàng của tôi </a></li>
                         </ul>
                     </aside>
                     <aside class="col-md">
-                        <h6 class="title">Social</h6>
+                        <h6 class="title">Xã hội</h6>
                         <ul class="list-unstyled">
                             <li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
                             <li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
@@ -271,8 +279,8 @@
 
             <section class="footer-bottom text-center">
 
-                <p class="text-white">Privacy Policy - Terms of Use - User Information Legal Enquiry Guide</p>
-                <p class="text-muted"> &copy 2019 Company name, All rights reserved </p>
+                <p class="text-white">Chính sách bảo mật - Điều khoản sử dụng - Thông tin người dùng Hướng dẫn hỏi đáp pháp lý</p>
+                <p class="text-muted"> &2019 Tên công ty, Mọi quyền được bảo lưu </p>
                 <br>
             </section>
         </div><!-- //container -->
