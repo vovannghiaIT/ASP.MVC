@@ -103,7 +103,7 @@
             <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>*@
                     </div> <!-- rating-wrap.// -->
 
-                   
+
                     @if (@Model.PriceDiscount != null)
                     {
 
@@ -116,12 +116,18 @@
                         <div class="price  p-sm-3 text-danger">@string.Format("{0:0,0}", @Model.Price)<sup>đ</sup></div>
 
                     }
+                   <p>Thương hiệu:</p>
+                    @Html.DropDownListFor(model => model.BrandId, ViewBag.ListBrand as SelectList, "Chọn thương hiệu", new { @disabled = "disabled" } )
+
+
+
                     <p>
-                        @Model.ShortDes
+
                     </p>
 
 
                     <dl class="row">
+
                         @*<dt class="col-sm-3">Manufacturer</dt>
             <dd class="col-sm-9"><a href="#">Great textile Ltd.</a></dd>
 

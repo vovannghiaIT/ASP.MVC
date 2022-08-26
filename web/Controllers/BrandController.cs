@@ -8,29 +8,21 @@ using Web.Models;
 
 namespace web.Controllers
 {
-    public class CategoryController : Controller
+    public class BrandController : Controller
     {
         QLBHEntities2 objQLBHEntities = new QLBHEntities2();
-        // GET: Category
-        public ActionResult category()
+        // GET: Brand
+        public ActionResult Index()
         {
-            var ListCategory = objQLBHEntities.Categories.ToList();
-            return View(ListCategory);
+            return View();
         }
         public ActionResult Product_Category(int Id)
         {
             HomeModel objHomeModel = new HomeModel();
-            objHomeModel.ListProduct = objQLBHEntities.Products.Where(n => n.CategoryId == Id).ToList();
+            objHomeModel.ListProduct = objQLBHEntities.Products.Where(n => n.BrandId == Id).ToList();
             objHomeModel.ListCategory = objQLBHEntities.Categories.ToList();
             objHomeModel.ListBrands = objQLBHEntities.Brands.ToList();
             return View(objHomeModel);
-        }
-      
-        public ActionResult Product_grid(int Id)
-        {
-            
-            var listProduct_grid = objQLBHEntities.Products.Where(n => n.Id == Id).ToList();
-            return View(listProduct_grid);
         }
     }
 }
